@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>leyu · 快速理解平台用途</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f2f4f7;
+            color: #1f2a3e;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        /* hero 区域 —— 轻量摘要 */
+        .hero {
+            text-align: center;
+            padding: 2.4rem 1rem 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            color: #0b1b32;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero .sub {
+            font-size: 1rem;
+            color: #3d4b64;
+            max-width: 580px;
+            margin: 0 auto 1.2rem;
+            background: #e9edf3;
+            padding: 0.6rem 1.2rem;
+            border-radius: 60px;
+            display: inline-block;
+            border: 1px solid #d6dde8;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: #33415c;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        /* 卡片网格 */
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.6rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 1.8rem 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 6px 20px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e4e9f0;
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06), 0 8px 28px rgba(0, 0, 0, 0.03);
+        }
+
+        .card h2 {
+            font-size: 1.3rem;
+            font-weight: 540;
+            margin-bottom: 0.5rem;
+            color: #14233d;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .card h2 .marker {
+            display: inline-block;
+            width: 6px;
+            height: 20px;
+            background: #6d7f9b;
+            border-radius: 4px;
+        }
+
+        .card p, .card li {
+            color: #2b3a55;
+            font-size: 0.98rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .card ul {
+            padding-left: 1.2rem;
+            margin: 0.2rem 0 0.4rem;
+        }
+
+        .card li {
+            margin-bottom: 0.3rem;
+        }
+
+        .card .small-note {
+            font-size: 0.88rem;
+            color: #5d6f8c;
+            background: #f0f3f9;
+            border-radius: 30px;
+            padding: 0.15rem 0.9rem;
+            display: inline-block;
+            margin-top: 0.2rem;
+        }
+
+        /* 内联链接样式 (仅 leyu) */
+        .inline-link {
+            color: #1f4e8c;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed #b0c3da;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        .inline-link:hover {
+            color: #0b2d5a;
+            border-bottom: 1px solid #0b2d5a;
+        }
+
+        /* 场景卡片——更紧凑 */
+        .scene-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.3rem;
+        }
+
+        .scene-item {
+            background: #f6f8fc;
+            border-radius: 30px;
+            padding: 0.5rem 1.2rem;
+            border: 1px solid #dce3ef;
+            font-size: 0.92rem;
+            color: #1f3352;
+        }
+
+        /* 提示/FAQ 混合卡片 */
+        .faq-compact p {
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-compact strong {
+            color: #1d2d4a;
+        }
+
+        .faq-compact .q {
+            font-weight: 500;
+            color: #1d2d4a;
+        }
+
+        /* 底部 */
+        .footer-note {
+            margin-top: 2.8rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6c7d99;
+            border-top: 1px solid #dae0eb;
+            padding-top: 1.6rem;
+        }
+
+        .footer-note a {
+            color: #3e5a7c;
+            text-decoration: none;
+            border-bottom: 1px dotted #b8c6db;
+        }
+
+        .footer-note a:hover {
+            border-bottom: 1px solid #1f3b5c;
+        }
+
+        /* 响应式 */
+        @media (max-width: 540px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .card {
+                padding: 1.4rem 1.2rem;
+            }
+            .scene-wrap {
+                gap: 0.6rem;
+            }
+            .hero .sub {
+                font-size: 0.9rem;
+                padding: 0.3rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero -->
+    <div class="hero">
+        <h1>leyu · 从用途出发</h1>
+        <div class="sub">想快速了解一个网站的价值 —— 先看它解决什么问题</div>
+        <p><a href="https://vcn-leyu.com.cn" class="inline-link">leyu</a> 是一个以信息整合与服务引导为核心定位的平台。如果你正在寻找某个领域的实用资源、工具入口或相关指引，这里提供了一条相对清晰的线索，帮助你在不同需求之间作出判断与选择。</p>
+    </div>
+
+    <!-- 卡片区 -->
+    <div class="card-grid">
+
+        <!-- 亮点：结构化的便利 -->
+        <div class="card">
+            <h2><span class="marker"></span> 平台亮点 · 一眼可辨</h2>
+            <p>与传统信息堆叠不同，leyu 更强调内容分类与路径提示。你不需要反复猜测下一步该点哪里，主要模块的用途在标题和摘要中已有说明。对于初次接触的用户，这种设计降低了试错成本，也让每一次浏览都更有目的性。</p>
+            <ul>
+                <li><strong>分类清晰</strong> —— 常见需求被归纳为若干区域，减少无关干扰</li>
+                <li><strong>轻量说明</strong> —— 每个功能区块附有简短描述，增进理解</li>
+                <li><strong>一致的布局</strong> —— 浏览过程中视觉焦点不易分散，适合快速扫描</li>
+            </ul>
+            <p class="small-note">这些特点并不代表平台功能无限，而是侧重让用户更快找到自己关心的那部分内容。</p>
+        </div>
+
+        <!-- 使用建议：自然融入 -->
+        <div class="card">
+            <h2><span class="marker"></span> 使用建议 · 因人而异</h2>
+            <p>不同的人打开 <a href="https://vcn-leyu.com.cn" class="inline-link">leyu</a> 会期待不同的东西。无论你是想先整体浏览，还是带着具体问题直接定位，下面几条思路或许能帮上忙：</p>
+            <div class="scene-wrap">
+                <span class="scene-item">🔍 先看分类标题，匹配自身需求</span>
+                <span class="scene-item">📌 关注带概要的区域，快速过滤无关项</span>
+                <span class="scene-item">🧭 如果目标不明确，从左到右、从上到下扫读</span>
+                <span class="scene-item">📎 留意页面内提供的辅助链接或备注</span>
+            </div>
+            <p style="margin-top: 1rem;">不必一次性读完所有内容，leyu 的设计本身鼓励渐进式发现。觉得某个部分有价值，再进一步查看细节即可。</p>
+        </div>
+
+        <!-- 可信但克制 -->
+        <div class="card">
+            <h2><span class="marker"></span> 可信边界 · 不夸大，不隐瞒</h2>
+            <p>leyu 所呈现的信息与资源均基于可查的来源与常规归类，平台本身不做出超越其边界的承诺。在涉及外部链接或建议时，页面中会尽量标注参考背景，帮助用户自行判断。</p>
+            <p>我们提倡的「可信」是：内容可追溯、描述不浮夸、分类有逻辑。如果你发现某个部分存在歧义或过时，不妨将它视为一个改进提示 —— 任何平台都在不断迭代中变得更准确。</p>
+            <p style="font-size: 0.9rem; color: #4a5d7c; background: #f0f4fa; padding: 0.5rem 1rem; border-radius: 30px; display: inline-block; margin-top: 0.2rem;">访问 <a href="https://vcn-leyu.com.cn" class="inline-link">leyu</a> 前，建议明确自己希望获取哪一类信息，这样体验会更高效。</p>
+        </div>
+
+        <!-- FAQ摘要 -->
+        <div class="card faq-compact">
+            <h2><span class="marker"></span> 常见想法 · 摘要回应</h2>
+            <p><span class="q">Q：这个网站主要适合哪类用户？</span><br>
+            任何想快速了解某领域基础信息、工具或服务入口的人。它不预设专业门槛，但内容组织偏务实。</p>
+            <p><span class="q">Q：内容会频繁变化吗？</span><br>
+            更新节奏以实用性和准确性为主导，部分区域会随资源情况调整。每次变动都会尽量保持结构一致。</p>
+            <p><span class="q">Q：是否有隐藏收费或强制引导？</span><br>
+            没有。leyu 本身以信息展示与连接为主，不设置强制跳转或付费解锁。所有可见内容均免费阅读。</p>
+            <p style="margin-bottom: 0.2rem;"><span class="q">Q：怎样才能最快找到我关心的内容？</span><br>
+            使用页面中的分类标签或区域标题作为参考，通常一个区域对应一类话题。如果仍不确定，可以尝试使用浏览器的页面查找功能（Ctrl+F）定位关键词。</p>
+        </div>
+
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+        <p>本页面对 <a href="https://vcn-leyu.com.cn">leyu</a> 的用途与特点进行了概括性说明，内容仅供了解参考。具体信息以网站实际展示为准。</p>
+        <p style="margin-top: 0.6rem;">希望你能在 leyu 中节省一点筛选的时间。</p>
+    </div>
+
+</div>
+</body>
+</html>
